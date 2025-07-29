@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="selector">
+    <h2>Choose a Data Structure or Algorithm</h2>
+    <form action="/visualize/" method="get">
+        <select name="structure">
+            <option value="avl_tree">AVL Tree</option>
+            <option value="heap">Min/Max Heap</option>
+            <option value="graph">Graph</option>
+        </select>
+        <button type="submit">Visualize</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="visualization-container">
+    <aside class="operation-log">
+        <h3>Operation Log</h3>
+        <ul id="op-log"></ul>
+    </aside>
+    <section class="svg-canvas">
+        <svg id="viz-canvas" width="600" height="400"></svg>
+        <div class="controls">
+            <button id="step-btn">Step</button>
+            <button id="benchmark-btn">Benchmark</button>
+            <button id="export-btn">Export CSV</button>
+        </div>
+    </section>
+</div>
+{% endblock %}

@@ -29,12 +29,13 @@ class EnhancedContactManager:
     def init_database(self):
         """Initialize the SQLite database with normalized schema and JSON support."""
         with sqlite3.connect(self.db_path) as conn:
-            # Enable JSON1 extension
-            conn.enable_load_extension(True)
+            # Enable JSON1 extension if available
             try:
+                conn.enable_load_extension(True)
                 conn.load_extension("json1")
-            except sqlite3.OperationalError:
-                click.echo(f"{Fore.YELLOW}Warning: JSON1 extension not available. JSON features will be limited.{Style.RESET_ALL}")
+            except (AttributeError, sqlite3.OperationalError):
+                # JSON1 extension not available, continue without it
+                pass
             
             cursor = conn.cursor()
             
@@ -170,21 +171,35 @@ class EnhancedContactManager:
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
             
-            # Search in core fields and metadata
-            cursor.execute('''
-                SELECT c.id, c.name, c.email, c.phone, c.address, 
-                       c.metadata, c.created_at, c.updated_at,
-                       GROUP_CONCAT(t.name) as tags
-                FROM contacts c
-                LEFT JOIN contact_tags ct ON c.id = ct.contact_id
-                LEFT JOIN tags t ON ct.tag_id = t.id
-                WHERE c.name LIKE ? OR c.email LIKE ? 
-                   OR json_extract(c.metadata, '$.birthday') LIKE ?
-                   OR json_extract(c.metadata, '$.social.twitter') LIKE ?
-                GROUP BY c.id
-                ORDER BY c.name
-            ''', (f'%{search_term}%', f'%{search_term}%', 
-                  f'%{search_term}%', f'%{search_term}%'))
+            # Try to use JSON1 extension for metadata search
+            try:
+                cursor.execute('''
+                    SELECT c.id, c.name, c.email, c.phone, c.address, 
+                           c.metadata, c.created_at, c.updated_at,
+                           GROUP_CONCAT(t.name) as tags
+                    FROM contacts c
+                    LEFT JOIN contact_tags ct ON c.id = ct.contact_id
+                    LEFT JOIN tags t ON ct.tag_id = t.id
+                    WHERE c.name LIKE ? OR c.email LIKE ? 
+                       OR json_extract(c.metadata, '$.birthday') LIKE ?
+                       OR json_extract(c.metadata, '$.social.twitter') LIKE ?
+                    GROUP BY c.id
+                    ORDER BY c.name
+                ''', (f'%{search_term}%', f'%{search_term}%', 
+                      f'%{search_term}%', f'%{search_term}%'))
+            except sqlite3.OperationalError:
+                # JSON1 not available, fall back to basic search
+                cursor.execute('''
+                    SELECT c.id, c.name, c.email, c.phone, c.address, 
+                           c.metadata, c.created_at, c.updated_at,
+                           GROUP_CONCAT(t.name) as tags
+                    FROM contacts c
+                    LEFT JOIN contact_tags ct ON c.id = ct.contact_id
+                    LEFT JOIN tags t ON ct.tag_id = t.id
+                    WHERE c.name LIKE ? OR c.email LIKE ? OR c.metadata LIKE ?
+                    GROUP BY c.id
+                    ORDER BY c.name
+                ''', (f'%{search_term}%', f'%{search_term}%', f'%{search_term}%'))
             
             contacts = cursor.fetchall()
             return contacts

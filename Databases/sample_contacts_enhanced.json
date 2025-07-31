@@ -1,0 +1,105 @@
+[
+  {
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "phone": "+1-555-123-4567",
+    "address": "123 Main St, Anytown, USA",
+    "birthday": "1990-05-15",
+    "social": {
+      "twitter": "@johndoe",
+      "linkedin": "linkedin.com/in/johndoe"
+    },
+    "company": "Tech Corp",
+    "position": "Software Engineer",
+    "notes": "Met at conference 2023",
+    "tags": ["work", "tech", "conference"]
+  },
+  {
+    "name": "Jane Smith",
+    "email": "jane.smith@example.com",
+    "phone": "+1-555-987-6543",
+    "address": "456 Oak Ave, Somewhere, USA",
+    "birthday": "1988-12-03",
+    "social": {
+      "twitter": "@janesmith",
+      "instagram": "@janesmith_art"
+    },
+    "company": "Design Studio",
+    "position": "UX Designer",
+    "interests": ["art", "design", "photography"],
+    "tags": ["design", "creative", "friend"]
+  },
+  {
+    "name": "Bob Johnson",
+    "email": "bob.johnson@example.com",
+    "phone": "+1-555-456-7890",
+    "address": "789 Pine Rd, Elsewhere, USA",
+    "birthday": "1975-08-22",
+    "social": {
+      "linkedin": "linkedin.com/in/bobjohnson"
+    },
+    "company": "Finance Inc",
+    "position": "Financial Analyst",
+    "tags": ["work", "finance"]
+  },
+  {
+    "name": "Alice Brown",
+    "email": "alice.brown@example.com",
+    "phone": "+1-555-321-0987",
+    "address": "321 Elm St, Nowhere, USA",
+    "birthday": "1992-03-10",
+    "social": {
+      "twitter": "@alicebrown",
+      "github": "github.com/alicebrown"
+    },
+    "company": "StartupXYZ",
+    "position": "Product Manager",
+    "skills": ["product management", "agile", "user research"],
+    "tags": ["startup", "product", "tech"]
+  },
+  {
+    "name": "Charlie Wilson",
+    "email": "charlie.wilson@example.com",
+    "phone": "+1-555-654-3210",
+    "address": "654 Maple Dr, Anywhere, USA",
+    "birthday": "1985-11-18",
+    "social": {
+      "twitter": "@charliewilson",
+      "linkedin": "linkedin.com/in/charliewilson"
+    },
+    "company": "Marketing Pro",
+    "position": "Marketing Director",
+    "interests": ["marketing", "social media", "branding"],
+    "tags": ["marketing", "work", "social"]
+  },
+  {
+    "name": "Diana Garcia",
+    "email": "diana.garcia@example.com",
+    "phone": "+1-555-789-0123",
+    "address": "987 Cedar Ln, Somewhere, USA",
+    "birthday": "1995-07-04",
+    "social": {
+      "instagram": "@dianagarcia",
+      "tiktok": "@dianagarcia"
+    },
+    "company": "Content Creator",
+    "position": "Influencer",
+    "interests": ["content creation", "fashion", "lifestyle"],
+    "tags": ["influencer", "content", "social"]
+  },
+  {
+    "name": "Ethan Lee",
+    "email": "ethan.lee@example.com",
+    "phone": "+1-555-012-3456",
+    "address": "147 Birch Way, Elsewhere, USA",
+    "birthday": "1987-09-25",
+    "social": {
+      "twitter": "@ethanlee",
+      "github": "github.com/ethanlee"
+    },
+    "company": "Open Source",
+    "position": "Open Source Contributor",
+    "skills": ["python", "javascript", "docker", "kubernetes"],
+    "tags": ["open-source", "developer", "tech"]
+  }
+] 

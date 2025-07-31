@@ -1,0 +1,213 @@
+{% extends "base.html" %}
+
+{% block title %}{% if contact %}Edit Contact{% else %}Add Contact{% endif %} - Enhanced Contact Manager{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">
+                    <i class="fas fa-{% if contact %}edit{% else %}plus{% endif %} me-2"></i>
+                    {% if contact %}Edit Contact{% else %}Add New Contact{% endif %}
+                </h4>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <!-- Basic Information -->
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="name" class="form-label">
+                                <i class="fas fa-user me-1"></i>Name *
+                            </label>
+                            <input type="text" class="form-control" id="name" name="name" 
+                                   value="{{ contact.name if contact else '' }}" required>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="form-label">
+                                <i class="fas fa-envelope me-1"></i>Email
+                            </label>
+                            <input type="email" class="form-control" id="email" name="email" 
+                                   value="{{ contact.email if contact else '' }}">
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="phone" class="form-label">
+                                <i class="fas fa-phone me-1"></i>Phone
+                            </label>
+                            <input type="tel" class="form-control" id="phone" name="phone" 
+                                   value="{{ contact.phone if contact else '' }}">
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="address" class="form-label">
+                                <i class="fas fa-map-marker-alt me-1"></i>Address
+                            </label>
+                            <input type="text" class="form-control" id="address" name="address" 
+                                   value="{{ contact.address if contact else '' }}">
+                        </div>
+                    </div>
+                    
+                    <!-- Tags -->
+                    <div class="mb-3">
+                        <label for="tags" class="form-label">
+                            <i class="fas fa-tags me-1"></i>Tags
+                        </label>
+                        <input type="text" class="form-control" id="tags" name="tags" 
+                               placeholder="Enter tags separated by commas (e.g., work, friend, tech)"
+                               value="{% if contact %}{{ contact.tags|map(attribute='name')|join(', ') }}{% endif %}">
+                        <div class="form-text">
+                            Separate multiple tags with commas. Tags will be created automatically if they don't exist.
+                        </div>
+                        
+                        <!-- Existing Tags -->
+                        {% if tags %}
+                            <div class="mt-2">
+                                <small class="text-muted">Existing tags:</small>
+                                <div class="mt-1">
+                                    {% for tag in tags %}
+                                        <span class="badge bg-light text-dark me-1 mb-1 tag-suggestion" 
+                                              onclick="addTagToInput('{{ tag.name }}')" 
+                                              style="cursor: pointer;">
+                                            {{ tag.name }}
+                                        </span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Metadata Section -->
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <h6 class="card-title mb-0">
+                                <i class="fas fa-cog me-1"></i>Additional Information (Optional)
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="birthday" class="form-label">
+                                        <i class="fas fa-birthday-cake me-1"></i>Birthday
+                                    </label>
+                                    <input type="date" class="form-control" id="birthday" name="birthday" 
+                                           value="{{ contact.metadata.birthday if contact and contact.metadata else '' }}">
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <label for="company" class="form-label">
+                                        <i class="fas fa-building me-1"></i>Company
+                                    </label>
+                                    <input type="text" class="form-control" id="company" name="company" 
+                                           value="{{ contact.metadata.company if contact and contact.metadata else '' }}">
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="position" class="form-label">
+                                        <i class="fas fa-briefcase me-1"></i>Position
+                                    </label>
+                                    <input type="text" class="form-control" id="position" name="position" 
+                                           value="{{ contact.metadata.position if contact and contact.metadata else '' }}">
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <label for="twitter" class="form-label">
+                                        <i class="fab fa-twitter me-1"></i>Twitter Handle
+                                    </label>
+                                    <input type="text" class="form-control" id="twitter" name="twitter" 
+                                           placeholder="@username"
+                                           value="{{ contact.metadata.social.twitter if contact and contact.metadata and contact.metadata.social else '' }}">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="notes" class="form-label">
+                                    <i class="fas fa-sticky-note me-1"></i>Notes
+                                </label>
+                                <textarea class="form-control" id="notes" name="notes" rows="3" 
+                                          placeholder="Any additional notes about this contact...">{{ contact.metadata.notes if contact and contact.metadata else '' }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Form Actions -->
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left me-1"></i>Cancel
+                        </a>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-{% if contact %}save{% else %}plus{% endif %} me-1"></i>
+                            {% if contact %}Update Contact{% else %}Add Contact{% endif %}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Help Card -->
+        <div class="card mt-3">
+            <div class="card-header">
+                <h6 class="card-title mb-0">
+                    <i class="fas fa-question-circle me-1"></i>Tips
+                </h6>
+            </div>
+            <div class="card-body">
+                <ul class="mb-0">
+                    <li>Tags help you organize and filter your contacts</li>
+                    <li>You can add custom metadata like birthdays, social media handles, and notes</li>
+                    <li>Email addresses must be unique across all contacts</li>
+                    <li>Phone numbers and addresses are optional but helpful for complete contact information</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function addTagToInput(tagName) {
+    const tagsInput = document.getElementById('tags');
+    const currentTags = tagsInput.value;
+    
+    if (currentTags) {
+        // Check if tag already exists
+        const tags = currentTags.split(',').map(tag => tag.trim());
+        if (!tags.includes(tagName)) {
+            tagsInput.value = currentTags + ', ' + tagName;
+        }
+    } else {
+        tagsInput.value = tagName;
+    }
+}
+
+// Auto-format phone number
+document.getElementById('phone').addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length > 0) {
+        if (value.length <= 3) {
+            value = value;
+        } else if (value.length <= 6) {
+            value = value.slice(0, 3) + '-' + value.slice(3);
+        } else {
+            value = value.slice(0, 3) + '-' + value.slice(3, 6) + '-' + value.slice(6, 10);
+        }
+    }
+    e.target.value = value;
+});
+
+// Auto-format Twitter handle
+document.getElementById('twitter').addEventListener('input', function(e) {
+    let value = e.target.value;
+    if (value && !value.startsWith('@')) {
+        e.target.value = '@' + value;
+    }
+});
+</script>
+{% endblock %} 

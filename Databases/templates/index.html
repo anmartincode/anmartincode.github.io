@@ -1,0 +1,288 @@
+{% extends "base.html" %}
+
+{% block title %}Contacts - Enhanced Contact Manager{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- Sidebar with filters -->
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-filter me-2"></i>Filters
+                </h5>
+            </div>
+            <div class="card-body">
+                <!-- Tag Filter -->
+                <h6 class="card-subtitle mb-2 text-muted">Filter by Tags</h6>
+                <div class="mb-3">
+                    <a href="{{ url_for('index', search=search) }}" 
+                       class="btn btn-sm btn-outline-primary mb-1 {% if not selected_tag %}active{% endif %}">
+                        All Tags
+                    </a>
+                    {% for tag in tags %}
+                        <a href="{{ url_for('index', search=search, tag=tag.name) }}" 
+                           class="btn btn-sm btn-outline-primary mb-1 {% if selected_tag == tag.name %}active{% endif %}">
+                            {{ tag.name }}
+                            <span class="badge bg-secondary ms-1">{{ tag.contacts.count() }}</span>
+                        </a>
+                    {% endfor %}
+                </div>
+                
+                <!-- Clear Filters -->
+                {% if search or selected_tag %}
+                    <hr>
+                    <a href="{{ url_for('index') }}" class="btn btn-outline-secondary btn-sm">
+                        <i class="fas fa-times me-1"></i>Clear All Filters
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Stats Card -->
+        <div class="card mt-3">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-chart-bar me-2"></i>Statistics
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-6">
+                        <h4 class="text-primary">{{ pagination.total }}</h4>
+                        <small class="text-muted">Total Contacts</small>
+                    </div>
+                    <div class="col-6">
+                        <h4 class="text-success">{{ tags|length }}</h4>
+                        <small class="text-muted">Tags</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main content -->
+    <div class="col-md-9">
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h2 class="mb-1">
+                    <i class="fas fa-address-book me-2"></i>Contacts
+                </h2>
+                {% if search or selected_tag %}
+                    <p class="text-muted mb-0">
+                        {% if search %}Searching for "{{ search }}"{% endif %}
+                        {% if search and selected_tag %} and {% endif %}
+                        {% if selected_tag %}Filtered by tag "{{ selected_tag }}"{% endif %}
+                        ({{ pagination.total }} results)
+                    </p>
+                {% endif %}
+            </div>
+            <a href="{{ url_for('new_contact') }}" class="btn btn-primary">
+                <i class="fas fa-plus me-1"></i>Add Contact
+            </a>
+        </div>
+        
+        <!-- Contacts Grid -->
+        {% if contacts %}
+            <div class="row">
+                {% for contact in contacts %}
+                    <div class="col-lg-6 col-xl-4 mb-4">
+                        <div class="card contact-card h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">{{ contact.name }}</h5>
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" 
+                                                type="button" data-bs-toggle="dropdown">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a class="dropdown-item" href="{{ url_for('edit_contact', contact_id=contact.id) }}">
+                                                    <i class="fas fa-edit me-2"></i>Edit
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <button class="dropdown-item text-danger" 
+                                                        onclick="deleteContact({{ contact.id }}, '{{ contact.name }}')">
+                                                    <i class="fas fa-trash me-2"></i>Delete
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <!-- Contact Info -->
+                                <div class="mb-3">
+                                    {% if contact.email %}
+                                        <div class="mb-1">
+                                            <i class="fas fa-envelope text-muted me-2"></i>
+                                            <a href="mailto:{{ contact.email }}" class="text-decoration-none">
+                                                {{ contact.email }}
+                                            </a>
+                                        </div>
+                                    {% endif %}
+                                    
+                                    {% if contact.phone %}
+                                        <div class="mb-1">
+                                            <i class="fas fa-phone text-muted me-2"></i>
+                                            <a href="tel:{{ contact.phone }}" class="text-decoration-none">
+                                                {{ contact.phone }}
+                                            </a>
+                                        </div>
+                                    {% endif %}
+                                    
+                                    {% if contact.address %}
+                                        <div class="mb-1">
+                                            <i class="fas fa-map-marker-alt text-muted me-2"></i>
+                                            <span class="text-muted">{{ contact.address }}</span>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <!-- Tags -->
+                                {% if contact.tags %}
+                                    <div class="mb-3">
+                                        {% for tag in contact.tags %}
+                                            <span class="badge bg-primary tag-badge">{{ tag.name }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                                
+                                <!-- Metadata Preview -->
+                                {% if contact.metadata %}
+                                    {% set metadata = contact.metadata|from_json %}
+                                    {% if metadata %}
+                                        <div class="metadata-preview">
+                                            {% if metadata.birthday %}
+                                                <div class="metadata-item">
+                                                    <i class="fas fa-birthday-cake me-1"></i>
+                                                    {{ metadata.birthday }}
+                                                </div>
+                                            {% endif %}
+                                            {% if metadata.company %}
+                                                <div class="metadata-item">
+                                                    <i class="fas fa-building me-1"></i>
+                                                    {{ metadata.company }}
+                                                </div>
+                                            {% endif %}
+                                            {% if metadata.social %}
+                                                <div class="metadata-item">
+                                                    <i class="fas fa-share-alt me-1"></i>
+                                                    Social Media
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                            
+                            <div class="card-footer text-muted">
+                                <small>
+                                    <i class="fas fa-clock me-1"></i>
+                                    Updated {{ contact.updated_at.strftime('%Y-%m-%d') if contact.updated_at else 'Unknown' }}
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            <!-- Pagination -->
+            {% if pagination.pages > 1 %}
+                <nav aria-label="Contacts pagination" class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        {% if pagination.has_prev %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{ url_for('index', page=pagination.prev_num, search=search, tag=selected_tag) }}">
+                                    <i class="fas fa-chevron-left"></i>
+                                </a>
+                            </li>
+                        {% endif %}
+                        
+                        {% for page_num in pagination.iter_pages() %}
+                            {% if page_num %}
+                                {% if page_num != pagination.page %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ url_for('index', page=page_num, search=search, tag=selected_tag) }}">
+                                            {{ page_num }}
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item active">
+                                        <span class="page-link">{{ page_num }}</span>
+                                    </li>
+                                {% endif %}
+                            {% else %}
+                                <li class="page-item disabled">
+                                    <span class="page-link">...</span>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        
+                        {% if pagination.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{ url_for('index', page=pagination.next_num, search=search, tag=selected_tag) }}">
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            {% endif %}
+            
+        {% else %}
+            <!-- Empty State -->
+            <div class="text-center py-5">
+                <i class="fas fa-address-book fa-3x text-muted mb-3"></i>
+                <h4 class="text-muted">No contacts found</h4>
+                <p class="text-muted">
+                    {% if search or selected_tag %}
+                        Try adjusting your search criteria or filters.
+                    {% else %}
+                        Get started by adding your first contact.
+                    {% endif %}
+                </p>
+                <a href="{{ url_for('new_contact') }}" class="btn btn-primary">
+                    <i class="fas fa-plus me-1"></i>Add Your First Contact
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete the contact "<span id="contactName"></span>"?</p>
+                <p class="text-danger"><small>This action cannot be undone.</small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form id="deleteForm" method="POST" style="display: inline;">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function deleteContact(contactId, contactName) {
+    document.getElementById('contactName').textContent = contactName;
+    document.getElementById('deleteForm').action = `/contact/${contactId}/delete`;
+    
+    const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+    deleteModal.show();
+}
+</script>
+{% endblock %} 

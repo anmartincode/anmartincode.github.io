@@ -159,54 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     document.body.appendChild(printButton);
 
-    // Add table of contents functionality
-    function createTableOfContents() {
-        const sections = document.querySelectorAll('.narrative-section h4');
-        const tocContainer = document.createElement('div');
-        tocContainer.className = 'table-of-contents';
-        tocContainer.innerHTML = '<h5><i class="fas fa-list me-2"></i>Table of Contents</h5><ul></ul>';
-        
-        const tocList = tocContainer.querySelector('ul');
-        
-        sections.forEach((section, index) => {
-            const listItem = document.createElement('li');
-            const link = document.createElement('a');
-            link.textContent = section.textContent.replace(/[^\w\s]/gi, '').trim();
-            link.href = `#section-${index}`;
-            link.className = 'toc-link';
-            
-            section.id = `section-${index}`;
-            
-            listItem.appendChild(link);
-            tocList.appendChild(listItem);
-        });
-        
-        // Insert TOC after the first paragraph
-        const firstSection = document.querySelector('.narrative-section');
-        if (firstSection) {
-            firstSection.parentNode.insertBefore(tocContainer, firstSection);
-        }
-    }
 
-    // Initialize table of contents
-    createTableOfContents();
-
-    // Add smooth scrolling for TOC links
-    document.querySelectorAll('.toc-link').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                const offsetTop = targetElement.offsetTop - 100;
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
 
     // Add search functionality
     function addSearchFunctionality() {

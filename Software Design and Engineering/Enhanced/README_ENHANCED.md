@@ -56,6 +56,20 @@ This enhanced version of the Animal Shelter Management System provides advanced 
 
 ## Installation
 
+### Quick Setup (Recommended)
+```bash
+# Clone the repository
+git clone <repository-url>
+cd "Software Design and Engineering/Enhanced"
+
+# Run the automated setup script
+python setup.py
+
+# Start the application (handles port conflicts automatically)
+python start_app.py
+```
+
+### Manual Setup
 ```bash
 # Clone the repository
 git clone <repository-url>
@@ -64,12 +78,12 @@ cd "Software Design and Engineering/Enhanced"
 # Install dependencies
 pip install -r requirements_enhanced.txt
 
-# Set up environment variables
-cp .env.example .env
-# Edit .env with your configuration
+# Set up configuration
+cp config.example.py config.py
+# Edit config.py with your configuration
 
-# Initialize database
-python init_database.py
+# Create necessary directories
+mkdir -p logs models data reports uploads
 
 # Start the application
 python enhanced_app.py
@@ -79,14 +93,18 @@ python enhanced_app.py
 
 ### Starting the Enhanced Application
 ```bash
-# Start the main application
-python enhanced_app.py
+# Start the main application (recommended - handles port conflicts)
+python start_app.py
 
 # Start the analytics dashboard
-python analytics_dashboard.py
+python start_app.py dashboard
 
-# Start the ML prediction service
-python ml_service.py
+# Run the demo
+python start_app.py demo
+
+# Alternative: Start components individually
+python enhanced_app.py
+python analytics_dashboard.py
 ```
 
 ### API Endpoints
@@ -117,6 +135,15 @@ python ml_service.py
 - `GET /api/health/logs` - Application logs
 
 ## Configuration
+
+### Setup Configuration
+```bash
+# Copy the configuration template
+cp config.example.py config.py
+
+# Edit config.py with your actual values
+# The application will use environment variables if set, otherwise defaults from config.py
+```
 
 ### Environment Variables
 ```bash
@@ -275,6 +302,19 @@ kubectl get services
 ## License
 
 MIT License - see LICENSE file for details
+
+## Troubleshooting
+
+### Port Conflicts
+If you encounter "Address already in use" errors:
+- **macOS**: Disable AirPlay Receiver in System Preferences → General → AirDrop & Handoff
+- **Use the start script**: `python start_app.py` automatically finds available ports
+- **Manual port change**: Edit `config.py` and change the PORT value
+
+### Common Issues
+- **Import errors**: Run `python setup.py` to install dependencies
+- **Database errors**: The application will create the database automatically on first run
+- **API connection errors**: Ensure the main application is running before starting the dashboard
 
 ## Support
 

@@ -16,14 +16,27 @@ from datetime import datetime, timedelta
 import requests
 import json
 import time
+import os
 from typing import Dict, List, Any
 
 # Initialize Dash app
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 app.title = "Enhanced Animal Shelter Analytics Dashboard"
 
+# Load configuration first
+try:
+    from config import config
+    config_name = os.environ.get('FLASK_CONFIG', 'default')
+    app_config = config[config_name]
+    API_PORT = app_config.PORT
+    DASHBOARD_PORT = 8050
+    API_BASE_URL = f"http://localhost:{API_PORT}/api"
+except ImportError:
+    API_PORT = int(os.environ.get('PORT', 8080))
+    DASHBOARD_PORT = 8050
+    API_BASE_URL = f"http://localhost:{API_PORT}/api"
+
 # Configuration
-API_BASE_URL = "http://localhost:5000/api"
 REFRESH_INTERVAL = 30000  # 30 seconds
 
 # Layout
@@ -540,5 +553,5 @@ def update_recent_adoptions_table(n_intervals, token):
 # Run the app
 if __name__ == '__main__':
     print("Starting Enhanced Analytics Dashboard...")
-    print("Make sure the main API server is running on http://localhost:5000")
-    app.run_server(debug=True, port=8050, host='0.0.0.0')
+    print(f"Make sure the main API server is running on http://localhost:{API_PORT}")
+    app.run(debug=True, port=DASHBOARD_PORT, host='0.0.0.0')

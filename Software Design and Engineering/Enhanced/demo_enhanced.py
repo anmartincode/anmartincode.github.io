@@ -12,7 +12,7 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Any
 
 # Configuration
-API_BASE_URL = "http://localhost:5000/api"
+API_BASE_URL = "http://localhost:8080/api"
 DEMO_DATA = [
     {
         "name": "Buddy",
@@ -396,7 +396,7 @@ class EnhancedShelterDemo:
                 print("❌ API server is not responding properly")
                 return
         except requests.exceptions.RequestException:
-            print("❌ Cannot connect to API server. Please ensure it's running on http://localhost:5000")
+            print("❌ Cannot connect to API server. Please ensure it's running on http://localhost:8080")
             return
         
         print("✅ API server is running")

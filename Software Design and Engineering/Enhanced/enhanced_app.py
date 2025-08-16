@@ -31,16 +31,36 @@ import pickle
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# Load configuration
+try:
+    from config import config
+    config_name = os.environ.get('FLASK_CONFIG', 'default')
+    app_config = config[config_name]
+except ImportError:
+    # Fallback configuration if config.py doesn't exist
+    class FallbackConfig:
+        SECRET_KEY = os.environ.get('SECRET_KEY', 'your-secret-key-here')
+        JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY', 'jwt-secret-key')
+        JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=1)
+        JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=30)
+        SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'sqlite:///animal_shelter_enhanced.db')
+        SQLALCHEMY_TRACK_MODIFICATIONS = False
+        PORT = int(os.environ.get('PORT', 8080))
+        HOST = os.environ.get('HOST', '0.0.0.0')
+        DEBUG = True
+    
+    app_config = FallbackConfig()
+
 # Initialize Flask app
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'your-secret-key-here')
-app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY', 'jwt-secret-key')
-app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=1)
-app.config['JWT_REFRESH_TOKEN_EXPIRES'] = timedelta(days=30)
+app.config['SECRET_KEY'] = app_config.SECRET_KEY
+app.config['JWT_SECRET_KEY'] = app_config.JWT_SECRET_KEY
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = app_config.JWT_ACCESS_TOKEN_EXPIRES
+app.config['JWT_REFRESH_TOKEN_EXPIRES'] = app_config.JWT_REFRESH_TOKEN_EXPIRES
 
 # Database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///animal_shelter_enhanced.db')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = app_config.SQLALCHEMY_DATABASE_URI
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = app_config.SQLALCHEMY_TRACK_MODIFICATIONS
 
 # Initialize extensions
 CORS(app)
@@ -675,4 +695,8 @@ def init_database():
 
 if __name__ == '__main__':
     init_database()
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(
+        debug=app_config.DEBUG, 
+        host=app_config.HOST, 
+        port=app_config.PORT
+    )

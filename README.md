@@ -243,8 +243,8 @@ This portfolio demonstrates quantifiable growth through:
 ## 🤝 Contact Information
 
 - **GitHub**: [github.com/anmartincode](https://github.com/anmartincode)
-- **LinkedIn**: [linkedin.com/in/andymartinez](https://linkedin.com/in/andymartinez)
-- **Email**: andymartinez@example.com
+- **LinkedIn**: [linkedin.com/in/andymartinez](https://www.linkedin.com/in/andy-martinez-478427b9/)
+
 
 ## 📄 License
 

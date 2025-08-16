@@ -1,32 +1,102 @@
 [
   {
-    "name": "John Doe",
-    "email": "john.doe@example.com",
-    "phone": "+1-555-123-4567",
-    "address": "123 Main St, Anytown, USA"
+    "name": "John Smith",
+    "email": "john.smith@email.com",
+    "phone": "555-0101",
+    "address": "123 Main St, Anytown, USA",
+    "company": "Tech Solutions Inc",
+    "job_title": "Senior Software Engineer",
+    "notes": "Lead developer on the main project",
+    "tags": "developer, python, senior"
   },
   {
-    "name": "Jane Smith",
-    "email": "jane.smith@example.com",
-    "phone": "+1-555-987-6543",
-    "address": "456 Oak Ave, Somewhere, USA"
+    "name": "Sarah Johnson",
+    "email": "sarah.johnson@email.com",
+    "phone": "555-0102",
+    "address": "456 Oak Ave, Somewhere, USA",
+    "company": "Data Analytics Corp",
+    "job_title": "Data Scientist",
+    "notes": "Specializes in machine learning",
+    "tags": "data-science, ml, python"
   },
   {
-    "name": "Bob Johnson",
-    "email": "bob.johnson@example.com",
-    "phone": "+1-555-456-7890",
-    "address": "789 Pine Rd, Elsewhere, USA"
+    "name": "Michael Brown",
+    "email": "michael.brown@email.com",
+    "phone": "555-0103",
+    "address": "789 Pine Rd, Elsewhere, USA",
+    "company": "Web Development LLC",
+    "job_title": "Frontend Developer",
+    "notes": "Expert in React and TypeScript",
+    "tags": "frontend, react, typescript"
   },
   {
-    "name": "Alice Brown",
-    "email": "alice.brown@example.com",
-    "phone": "+1-555-321-0987",
-    "address": "321 Elm St, Nowhere, USA"
+    "name": "Emily Davis",
+    "email": "emily.davis@email.com",
+    "phone": "555-0104",
+    "address": "321 Elm St, Nowhere, USA",
+    "company": "Cloud Services Inc",
+    "job_title": "DevOps Engineer",
+    "notes": "Infrastructure and deployment specialist",
+    "tags": "devops, aws, kubernetes"
   },
   {
-    "name": "Charlie Wilson",
-    "email": "charlie.wilson@example.com",
-    "phone": "+1-555-654-3210",
-    "address": "654 Maple Dr, Anywhere, USA"
+    "name": "David Wilson",
+    "email": "david.wilson@email.com",
+    "phone": "555-0105",
+    "address": "654 Maple Dr, Anywhere, USA",
+    "company": "Mobile Apps Co",
+    "job_title": "Mobile Developer",
+    "notes": "iOS and Android development",
+    "tags": "mobile, ios, android"
+  },
+  {
+    "name": "Lisa Anderson",
+    "email": "lisa.anderson@email.com",
+    "phone": "555-0106",
+    "address": "987 Cedar Ln, Someplace, USA",
+    "company": "Security Systems Ltd",
+    "job_title": "Security Engineer",
+    "notes": "Cybersecurity and penetration testing",
+    "tags": "security, cybersecurity, pentesting"
+  },
+  {
+    "name": "Robert Taylor",
+    "email": "robert.taylor@email.com",
+    "phone": "555-0107",
+    "address": "147 Birch Way, Everywhere, USA",
+    "company": "Database Solutions",
+    "job_title": "Database Administrator",
+    "notes": "SQL and NoSQL database management",
+    "tags": "database, sql, nosql"
+  },
+  {
+    "name": "Jennifer Martinez",
+    "email": "jennifer.martinez@email.com",
+    "phone": "555-0108",
+    "address": "258 Spruce Ct, Anywhere, USA",
+    "company": "AI Research Lab",
+    "job_title": "AI Researcher",
+    "notes": "Deep learning and neural networks",
+    "tags": "ai, deep-learning, research"
+  },
+  {
+    "name": "Christopher Garcia",
+    "email": "christopher.garcia@email.com",
+    "phone": "555-0109",
+    "address": "369 Willow Pl, Somewhere, USA",
+    "company": "Game Development Studio",
+    "job_title": "Game Developer",
+    "notes": "Unity and Unreal Engine development",
+    "tags": "gaming, unity, unreal"
+  },
+  {
+    "name": "Amanda Rodriguez",
+    "email": "amanda.rodriguez@email.com",
+    "phone": "555-0110",
+    "address": "741 Poplar Blvd, Elsewhere, USA",
+    "company": "Blockchain Technologies",
+    "job_title": "Blockchain Developer",
+    "notes": "Smart contracts and DeFi applications",
+    "tags": "blockchain, smart-contracts, defi"
   }
 ] 

@@ -174,10 +174,11 @@ class BTree:
         i = len(node.keys) - 1
         
         if node.leaf:
-            # Insert into leaf node
+            # Insert into leaf node - use efficient list operations
+            # Find the correct position
             while i >= 0 and key < node.keys[i]:
-                node.keys.insert(i + 1, node.keys[i])
                 i -= 1
+            # Insert at the correct position
             node.keys.insert(i + 1, key)
         else:
             # Find child to insert into

@@ -218,13 +218,18 @@ class EnhancedVisualizer:
         }
         
         results = {}
-        for name, algorithm in algorithms.items():
+        total_algorithms = len(algorithms)
+        
+        for i, (name, algorithm) in enumerate(algorithms.items(), 1):
             try:
+                print(f"Testing {name}... ({i}/{total_algorithms})")
                 metrics = self.measure_performance(algorithm, data.copy())
                 results[name] = metrics
                 self.metrics_history.append(metrics)
+                print(f"✓ {name} completed in {metrics.execution_time:.4f}s")
             except Exception as e:
                 logger.error(f"Error benchmarking {name}: {e}")
+                print(f"✗ {name} failed: {e}")
         
         return results
     
@@ -371,34 +376,65 @@ class EnhancedVisualizer:
 
 def main():
     """Main function to run the enhanced visualizer"""
+    # Configuration
+    TEST_DATA_SIZE = 100  # Adjust this to change the number of elements to test
+    TIMEOUT_SECONDS = 30  # Maximum time to wait for benchmarking
+    
     visualizer = EnhancedVisualizer()
     
     # Example usage
     print("Enhanced Algorithm Visualizer")
     print("=" * 40)
     
-    # Generate sample data
-    sample_data = list(range(1000, 0, -1))  # Reverse sorted data
+    # Generate sample data - reduced size for faster testing
+    sample_data = list(range(TEST_DATA_SIZE, 0, -1))  # Reverse sorted data
     
     print(f"Benchmarking algorithms on {len(sample_data)} elements...")
+    print(f"Timeout set to {TIMEOUT_SECONDS} seconds")
+    print()
     
-    # Run benchmark
-    metrics = visualizer.benchmark_algorithms(sample_data)
-    
-    # Generate report
-    report = visualizer.generate_performance_report(metrics)
-    print(report)
-    
-    # Save report
-    with open("performance_report.md", "w") as f:
-        f.write(report)
-    
-    print("Report saved to performance_report.md")
-    
-    # Start interactive dashboard
-    print("Starting interactive dashboard...")
-    app = visualizer.create_interactive_dashboard()
-    app.run_server(debug=True, port=8050)
+    # Run benchmark with timeout
+    try:
+        import signal
+        
+        def timeout_handler(signum, frame):
+            raise TimeoutError(f"Benchmark timed out after {TIMEOUT_SECONDS} seconds")
+        
+        # Set timeout
+        signal.signal(signal.SIGALRM, timeout_handler)
+        signal.alarm(TIMEOUT_SECONDS)
+        
+        metrics = visualizer.benchmark_algorithms(sample_data)
+        
+        # Cancel the alarm
+        signal.alarm(0)
+        
+        print("\n" + "=" * 40)
+        print("BENCHMARK COMPLETED")
+        print("=" * 40)
+        
+        # Generate report
+        report = visualizer.generate_performance_report(metrics)
+        print(report)
+        
+        # Save report
+        with open("performance_report.md", "w") as f:
+            f.write(report)
+        
+        print("Report saved to performance_report.md")
+        
+        # Start interactive dashboard
+        print("\nStarting interactive dashboard...")
+        print("Open your browser to http://localhost:8050")
+        app = visualizer.create_interactive_dashboard()
+        app.run(debug=True, port=8050)
+        
+    except TimeoutError as e:
+        print(f"Error: {e}")
+        print("Consider reducing the data size or optimizing the algorithms.")
+    except Exception as e:
+        print(f"Error during benchmarking: {e}")
+        print("Consider reducing the data size or checking algorithm implementations.")
 
 if __name__ == "__main__":
     main()

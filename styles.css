@@ -47,11 +47,12 @@ body {
 /* Hero Section */
 .hero-section {
     background: var(--gradient-primary);
-    min-height: 100vh;
+    min-height: 70vh;
     display: flex;
     align-items: center;
     position: relative;
     overflow: hidden;
+    padding: 4rem 0;
 }
 
 .hero-section::before {
@@ -346,6 +347,8 @@ footer {
 @media (max-width: 768px) {
     .hero-section {
         text-align: center;
+        min-height: 60vh;
+        padding: 3rem 0;
     }
     
     .hero-section .display-4 {
@@ -370,6 +373,11 @@ footer {
 }
 
 @media (max-width: 576px) {
+    .hero-section {
+        min-height: 50vh;
+        padding: 2rem 0;
+    }
+    
     .hero-section .display-4 {
         font-size: 2rem;
     }

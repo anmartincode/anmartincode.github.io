@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Individual Artifact Narratives - Andy Martinez</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="narrative-styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-arrow-left me-2"></i>Back to Portfolio
+            </a>
+            <div class="navbar-nav ms-auto">
+                <span class="navbar-text">
+                    Individual Artifact Narratives
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="narrative-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1 class="display-4 fw-bold text-white mb-4">
+                        Individual Artifact Narratives
+                    </h1>
+                    <p class="lead text-white-50">
+                        Detailed documentation of my CS499 capstone project development and enhancement process
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Narrative Navigation -->
+    <section class="narrative-nav py-4 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="nav-tabs-wrapper">
+                        <ul class="nav nav-tabs justify-content-center" id="narrativeTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="software-tab" data-bs-toggle="tab" data-bs-target="#software" type="button" role="tab">
+                                    <i class="fas fa-code me-2"></i>Software Design
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="algorithms-tab" data-bs-toggle="tab" data-bs-target="#algorithms" type="button" role="tab">
+                                    <i class="fas fa-sitemap me-2"></i>Algorithms
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="databases-tab" data-bs-toggle="tab" data-bs-target="#databases" type="button" role="tab">
+                                    <i class="fas fa-database me-2"></i>Databases
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Narrative Content -->
+    <section class="narrative-content py-5">
+        <div class="container">
+            <div class="tab-content" id="narrativeTabContent">
+                <!-- Software Design Narrative -->
+                <div class="tab-pane fade show active" id="software" role="tabpanel">
+                    <div class="narrative-container">
+                        <div class="narrative-header-content">
+                            <div class="narrative-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h2>Software Design & Engineering</h2>
+                            <h3>Animal Shelter Management System</h3>
+                            <div class="narrative-meta">
+                                <span class="badge bg-primary">MongoDB</span>
+                                <span class="badge bg-secondary">Python</span>
+                                <span class="badge bg-info">REST API</span>
+                                <span class="badge bg-success">CRUD Operations</span>
+                            </div>
+                        </div>
+                        
+                        <div class="narrative-body">
+                            <div class="narrative-section">
+                                <h4><i class="fas fa-question-circle me-2"></i>What is the artifact and when was it created?</h4>
+                                <p>The Animal Shelter Management System is a comprehensive MongoDB-based CRUD application designed to manage animal records for an animal shelter. Originally created during my CS-340 (Client/Server Development) course in 2023, this project demonstrates advanced software engineering principles and database management techniques.</p>
+                                <p>The system provides a robust interface for creating, reading, updating, and deleting animal records with comprehensive data validation, error handling, and logging capabilities. It was designed to handle real-world scenarios where data integrity and system reliability are critical.</p>
+                            </div>
+
+                            <div class="narrative-section">
+                                <h4><i class="fas fa-star me-2"></i>Why include it? What skills does it showcase?</h4>
+                                <p>This artifact is included because it demonstrates significant growth in software design and engineering principles. It showcases:</p>
+                                
+                                <div class="skills-grid">
+                                    <div class="skill-category">
+                                        <h5><i class="fas fa-cogs me-2"></i>Advanced Software Engineering Practices</h5>
+                                        <ul>
+                                            <li><strong>Clean Architecture:</strong> The code follows separation of concerns with clear class structures and modular design</li>
+                                            <li><strong>Error Handling:</strong> Comprehensive exception handling with proper logging and user feedback</li>
+                                            <li><strong>Data Validation:</strong> JSON schema validation ensuring data integrity and preventing invalid data entry</li>
+                                            <li><strong>Documentation:</strong> Extensive docstrings and inline comments following professional standards</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="skill-category">
+                                        <h5><i class="fas fa-database me-2"></i>Database Management Skills</h5>
+                                        <ul>
+                                            <li><strong>MongoDB Integration:</strong> Deep understanding of NoSQL database operations and connection management</li>
+                                            <li><strong>CRUD Operations:</strong> Complete implementation of Create, Read, Update, Delete operations</li>
+                                            <li><strong>Query Optimization:</strong> Efficient database queries with proper indexing considerations</li>
+                                            <li><strong>Connection Management:</strong> Robust database connection handling with error recovery</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="skill-category">
+                                        <h5><i class="fas fa-shield-alt me-2"></i>Professional Development Practices</h5>
+                                        <ul>
+                                            <li><strong>Logging:</strong> Structured logging implementation for debugging and monitoring</li>
+                                            <li><strong>Configuration Management:</strong> Environment-based configuration for different deployment scenarios</li>
+                                            <li><strong>Security:</strong> Input validation and sanitization to prevent injection attacks</li>
+                                            <li><strong>Maintainability:</strong> Code written with future enhancements and maintenance in mind</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="narrative-section">
+                                <h4><i class="fas fa-graduation-cap me-2"></i>What did you learn? What challenges did you face? Which course outcomes were met?</h4>
+                                
+                                <div class="learning-outcomes">
+                                    <div class="outcome-card">
+                                        <h5><i class="fas fa-lightbulb me-2"></i>Key Learnings</h5>
+                                        <ol>
+                                            <li><strong>Database Design Principles:</strong> Understanding the trade-offs between SQL and NoSQL databases, and when to use each</li>
+                                            <li><strong>Error Handling Strategies:</strong> Implementing comprehensive error handling that provides meaningful feedback while maintaining system stability</li>
+                                            <li><strong>Data Validation:</strong> Learning the importance of validating data at multiple levels (client, server, database)</li>
+                                            <li><strong>Logging and Monitoring:</strong> Understanding how proper logging can aid in debugging and system monitoring</li>
+                                            <li><strong>Professional Code Standards:</strong> Writing code that follows industry best practices and is maintainable by other developers</li>
+                                        </ol>
+                                    </div>
+                                    
+                                    <div class="outcome-card">
+                                        <h5><i class="fas fa-exclamation-triangle me-2"></i>Challenges Faced</h5>
+                                        <ul>
+                                            <li><strong>MongoDB Connection Management:</strong> Initially struggled with proper connection handling and error recovery in MongoDB</li>
+                                            <li><strong>Data Validation Complexity:</strong> Implementing comprehensive validation that covered all edge cases while maintaining performance</li>
+                                            <li><strong>Error Message Clarity:</strong> Balancing technical error details with user-friendly messages</li>
+                                            <li><strong>Schema Evolution:</strong> Designing a flexible schema that could accommodate future changes without breaking existing functionality</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="outcome-card">
+                                        <h5><i class="fas fa-check-circle me-2"></i>Course Outcomes Met</h5>
+                                        <ul>
+                                            <li><strong>CS-340 Outcome 1:</strong> Design and develop a client/server application using appropriate technologies</li>
+                                            <li><strong>CS-340 Outcome 2:</strong> Implement database connectivity and data access patterns</li>
+                                            <li><strong>CS-340 Outcome 3:</strong> Apply security principles to client/server applications</li>
+                                            <li><strong>CS-340 Outcome 4:</strong> Implement proper error handling and logging</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="narrative-section">
+                                <h4><i class="fas fa-rocket me-2"></i>Enhancement Demonstrations</h4>
+                                <p>The enhanced version includes several improvements over the original:</p>
+                                <div class="enhancement-grid">
+                                    <div class="enhancement-item">
+                                        <i class="fas fa-globe"></i>
+                                        <h6>RESTful API Integration</h6>
+                                        <p>Added Flask-based REST API for web interface</p>
+                                    </div>
+                                    <div class="enhancement-item">
+                                        <i class="fas fa-check-double"></i>
+                                        <h6>Advanced Validation</h6>
+                                        <p>Implemented JSON schema validation with detailed error messages</p>
+                                    </div>
+                                    <div class="enhancement-item">
+                                        <i class="fas fa-file-alt"></i>
+                                        <h6>Enhanced Logging</h6>
+                                        <p>Structured logging with different levels and output formats</p>
+                                    </div>
+                                    <div class="enhancement-item">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                        <h6>Performance Optimization</h6>
+                                        <p>Query optimization and connection pooling</p>
+                                    </div>
+                                    <div class="enhancement-item">
+                                        <i class="fas fa-lock"></i>
+                                        <h6>Security Enhancements</h6>
+                                        <p>Input sanitization and parameterized queries</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="narrative-conclusion">
+                                <p>This artifact represents a significant step in my software engineering journey, demonstrating the ability to create production-ready applications with proper architecture, error handling, and maintainability considerations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Algorithms Narrative -->
+                <div class="tab-pane fade" id="algorithms" role="tabpanel">
+                    <div class="narrative-container">
+                        <div class="narrative-header-content">
+                            <div class="narrative-icon">
+                                <i class="fas fa-sitemap"></i>
+                            </div>
+                            <h2>Algorithms & Data Structures</h2>
+                            <h3>Interactive Algorithm Visualizer</h3>
+                            <div class="narrative-meta">
+                                <span class="badge bg-primary">Flask</span>
+                                <span class="badge bg-secondary">JavaScript</span>
+                                <span class="badge bg-info">D3.js</span>
+                                <span class="badge bg-success">Visualization</span>
+                            </div>
+                        </div>
+                        
+                        <div class="narrative-body">
+                            <div class="narrative-section">
+                                <h4><i class="fas fa-question-circle me-2"></i>What is the artifact and when was it created?</h4>
+                                <p>The Interactive Algorithm Visualizer is a comprehensive web application designed to demonstrate and visualize fundamental data structures and algorithms. Created during my CS-260 (Data Structures and Algorithms) course, this project provides an interactive platform for understanding complex algorithmic concepts through visual representation.</p>
+                                <p>The application features step-by-step animations of AVL trees, graph algorithms, and heap operations, making abstract concepts tangible and easier to comprehend. It serves as both an educational tool and a demonstration of modern web development practices.</p>
+                            </div>
+
+                            <div class="narrative-section">
+                                <h4><i class="fas fa-star me-2"></i>Why include it? What skills does it showcase?</h4>
+                                <p>This artifact demonstrates my deep understanding of algorithms and data structures, along with the ability to create engaging educational content. It showcases:</p>
+                                
+                                <div class="skills-grid">
+                                    <div class="skill-category">
+                                        <h5><i class="fas fa-brain me-2"></i>Algorithmic Thinking</h5>
+                                        <ul>
+                                            <li><strong>Data Structure Implementation:</strong> Complete implementation of AVL trees, graphs, and heaps</li>
+                                            <li><strong>Algorithm Design:</strong> Efficient algorithms for tree balancing, graph traversal, and heap operations</li>
+                                            <li><strong>Complexity Analysis:</strong> Understanding of time and space complexity for various operations</li>
+                                            <li><strong>Optimization Techniques:</strong> Implementation of optimized algorithms for real-world performance</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="skill-category">
+                                        <h5><i class="fas fa-eye me-2"></i>Visualization Skills</h5>
+                                        <ul>
+                                            <li><strong>D3.js Integration:</strong> Advanced data visualization using D3.js library</li>
+                                            <li><strong>Interactive Design:</strong> User-friendly interfaces for algorithm exploration</li>
+                                            <li><strong>Animation Implementation:</strong> Smooth step-by-step animations for algorithm demonstration</li>
+                                            <li><strong>Responsive Design:</strong> Cross-platform compatibility and mobile responsiveness</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="skill-category">
+                                        <h5><i class="fas fa-code me-2"></i>Web Development</h5>
+                                        <ul>
+                                            <li><strong>Flask Framework:</strong> Backend development using Python Flask</li>
+                                            <li><strong>Frontend Technologies:</strong> HTML5, CSS3, and JavaScript for user interface</li>
+                                            <li><strong>API Design:</strong> RESTful API endpoints for algorithm operations</li>
+                                            <li><strong>Performance Optimization:</strong> Efficient rendering and memory management</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="narrative-section">
+                                <h4><i class="fas fa-graduation-cap me-2"></i>What did you learn? What challenges did you face? Which course outcomes were met?</h4>
+                                
+                                <div class="learning-outcomes">
+                                    <div class="outcome-card">
+                                        <h5><i class="fas fa-lightbulb me-2"></i>Key Learnings</h5>
+                                        <ol>
+                                            <li><strong>Algorithm Visualization:</strong> Understanding how to break down complex algorithms into visualizable steps</li>
+                                            <li><strong>Educational Technology:</strong> Creating tools that make complex concepts accessible to learners</li>
+                                            <li><strong>Performance Optimization:</strong> Balancing visual appeal with computational efficiency</li>
+                                            <li><strong>User Experience Design:</strong> Designing interfaces that enhance learning outcomes</li>
+                                            <li><strong>Cross-Platform Development:</strong> Ensuring consistent experience across different devices and browsers</li>
+                                        </ol>
+                                    </div>
+                                    
+                                    <div class="outcome-card">
+                                        <h5><i class="fas fa-exclamation-triangle me-2"></i>Challenges Faced</h5>
+                                        <ul>
+                                            <li><strong>Animation Synchronization:</strong> Coordinating complex animations with algorithm execution</li>
+                                            <li><strong>Memory Management:</strong> Handling large datasets without performance degradation</li>
+                                            <li><strong>Browser Compatibility:</strong> Ensuring consistent behavior across different browsers</li>
+                                            <li><strong>Algorithm Complexity:</strong> Simplifying complex algorithms for visual representation</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="outcome-card">
+                                        <h5><i class="fas fa-check-circle me-2"></i>Course Outcomes Met</h5>
+                                        <ul>
+                                            <li><strong>CS-260 Outcome 1:</strong> Analyze and implement fundamental data structures</li>
+                                            <li><strong>CS-260 Outcome 2:</strong> Design and implement efficient algorithms</li>
+                                            <li><strong>CS-260 Outcome 3:</strong> Analyze algorithm complexity and performance</li>
+                                            <li><strong>CS-260 Outcome 4:</strong> Apply data structures and algorithms to solve real-world problems</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="narrative-conclusion">
+                                <p>This project demonstrates my ability to not only understand complex algorithms but also to communicate these concepts effectively through interactive visualization, making it an excellent example of both technical skill and educational value.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Databases Narrative -->
+                <div class="tab-pane fade" id="databases" role="tabpanel">
+                    <div class="narrative-container">
+                        <div class="narrative-header-content">
+                            <div class="narrative-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h2>Databases</h2>
+                            <h3>Contact Management System</h3>
+                            <div class="narrative-meta">
+                                <span class="badge bg-primary">SQLite</span>
+                                <span class="badge bg-secondary">Python</span>
+                                <span class="badge bg-info">CLI</span>
+                                <span class="badge bg-success">CRUD</span>
+                            </div>
+                        </div>
+                        
+                        <div class="narrative-body">
+                            <div class="narrative-section">
+                                <h4><i class="fas fa-question-circle me-2"></i>What is the artifact and when was it created?</h4>
+                                <p>The Contact Management System is a comprehensive database application designed to manage personal and business contacts efficiently. Developed during my CS-340 (Client/Server Development) course, this project demonstrates advanced database design principles and practical application development.</p>
+                                <p>The system features a command-line interface for managing contact information, including names, phone numbers, email addresses, and additional metadata. It provides robust data validation, search capabilities, and data import/export functionality, making it suitable for real-world contact management needs.</p>
+                            </div>
+
+                            <div class="narrative-section">
+                                <h4><i class="fas fa-star me-2"></i>Why include it? What skills does it showcase?</h4>
+                                <p>This artifact demonstrates my proficiency in database design and management, along with practical application development. It showcases:</p>
+                                
+                                <div class="skills-grid">
+                                    <div class="skill-category">
+                                        <h5><i class="fas fa-database me-2"></i>Database Design</h5>
+                                        <ul>
+                                            <li><strong>Schema Design:</strong> Well-structured database schema with proper relationships</li>
+                                            <li><strong>Data Normalization:</strong> Efficient data organization following normalization principles</li>
+                                            <li><strong>Indexing Strategy:</strong> Strategic use of indexes for optimal query performance</li>
+                                            <li><strong>Data Integrity:</strong> Implementation of constraints and validation rules</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="skill-category">
+                                        <h5><i class="fas fa-terminal me-2"></i>Application Development</h5>
+                                        <ul>
+                                            <li><strong>CLI Design:</strong> User-friendly command-line interface with intuitive commands</li>
+                                            <li><strong>Data Processing:</strong> Efficient handling of data import/export operations</li>
+                                            <li><strong>Error Handling:</strong> Comprehensive error management and user feedback</li>
+                                            <li><strong>Performance Optimization:</strong> Optimized queries and efficient data operations</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="skill-category">
+                                        <h5><i class="fas fa-shield-alt me-2"></i>Data Management</h5>
+                                        <ul>
+                                            <li><strong>Data Validation:</strong> Comprehensive input validation and sanitization</li>
+                                            <li><strong>Backup and Recovery:</strong> Data backup strategies and recovery procedures</li>
+                                            <li><strong>Data Migration:</strong> Import/export functionality for data portability</li>
+                                            <li><strong>Security:</strong> Secure handling of sensitive contact information</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="narrative-section">
+                                <h4><i class="fas fa-graduation-cap me-2"></i>What did you learn? What challenges did you face? Which course outcomes were met?</h4>
+                                
+                                <div class="learning-outcomes">
+                                    <div class="outcome-card">
+                                        <h5><i class="fas fa-lightbulb me-2"></i>Key Learnings</h5>
+                                        <ol>
+                                            <li><strong>Database Design Principles:</strong> Understanding of normalization, indexing, and optimization techniques</li>
+                                            <li><strong>SQL Mastery:</strong> Advanced SQL queries, joins, and data manipulation operations</li>
+                                            <li><strong>Application Architecture:</strong> Designing scalable and maintainable database applications</li>
+                                            <li><strong>Data Migration Strategies:</strong> Techniques for importing and exporting data between systems</li>
+                                            <li><strong>Performance Tuning:</strong> Optimizing database queries and application performance</li>
+                                        </ol>
+                                    </div>
+                                    
+                                    <div class="outcome-card">
+                                        <h5><i class="fas fa-exclamation-triangle me-2"></i>Challenges Faced</h5>
+                                        <ul>
+                                            <li><strong>Data Consistency:</strong> Ensuring data integrity across complex operations</li>
+                                            <li><strong>Performance Optimization:</strong> Balancing functionality with query performance</li>
+                                            <li><strong>User Experience:</strong> Creating an intuitive CLI interface for complex operations</li>
+                                            <li><strong>Data Migration:</strong> Handling various data formats and ensuring accurate import/export</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="outcome-card">
+                                        <h5><i class="fas fa-check-circle me-2"></i>Course Outcomes Met</h5>
+                                        <ul>
+                                            <li><strong>CS-340 Outcome 1:</strong> Design and implement database applications</li>
+                                            <li><strong>CS-340 Outcome 2:</strong> Apply database design principles and normalization</li>
+                                            <li><strong>CS-340 Outcome 3:</strong> Implement data access patterns and optimization</li>
+                                            <li><strong>CS-340 Outcome 4:</strong> Develop secure and efficient database applications</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="narrative-conclusion">
+                                <p>This project demonstrates my comprehensive understanding of database systems and practical application development, showcasing the ability to create robust, user-friendly applications that effectively manage and manipulate data.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p>&copy; 2024 Andy Martinez. All rights reserved.</p>
+            <p>Computer Science ePortfolio - SNHU</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="narrative-script.js"></script>
+</body>
+</html>

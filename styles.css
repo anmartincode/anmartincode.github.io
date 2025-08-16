@@ -249,6 +249,24 @@ body {
     border-radius: 2px;
 }
 
+/* Narrative Viewing Options */
+.narrative-viewing-options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.narrative-viewing-options .btn {
+    transition: all 0.3s ease;
+}
+
+.narrative-viewing-options .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
 /* Contact Section */
 .contact-info {
     display: grid;

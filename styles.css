@@ -52,12 +52,12 @@ body {
     align-items: center;
     position: relative;
     overflow: hidden;
-    padding: 4rem 0;
+    padding: 3rem 0;
 }
 
 .hero-section::before {
     content: '';
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     right: 0;

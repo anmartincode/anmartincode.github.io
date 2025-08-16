@@ -47,12 +47,12 @@ body {
 /* Hero Section */
 .hero-section {
     background: var(--gradient-primary);
-    min-height: 70vh;
+    min-height: 40vh;
     display: flex;
     align-items: center;
     position: relative;
     overflow: hidden;
-    padding: 3rem 0;
+    padding: 0rem 0;
 }
 
 .hero-section::before {
@@ -132,7 +132,7 @@ body {
 .artifact-card {
     background: white;
     padding: 2rem;
-    border-radius: 15px;
+    border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;

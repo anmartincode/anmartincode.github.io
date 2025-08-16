@@ -355,6 +355,28 @@ body {
     font-weight: 600;
 }
 
+.summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.summary-header h4 {
+    margin-bottom: 0;
+}
+
+.summary-note {
+    font-style: italic;
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
 /* Artifact Cards */
 .artifact-card {
     background: white;

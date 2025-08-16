@@ -91,7 +91,6 @@ class ContactManager:
             return result
         return wrapper
     
-    @_measure_performance
     def load_from_json(self, json_file):
         """Load contacts from a JSON file into the database."""
         if not os.path.exists(json_file):
@@ -137,7 +136,6 @@ class ContactManager:
             click.echo(f"{Fore.RED}Error loading contacts: {e}{Style.RESET_ALL}")
             return False
     
-    @_measure_performance
     def lookup_contact(self, search_term):
         """Look up contacts by name, email, company, or tags."""
         with sqlite3.connect(self.db_path) as conn:
@@ -152,7 +150,6 @@ class ContactManager:
             contacts = cursor.fetchall()
             return contacts
     
-    @_measure_performance
     def add_contact(self, name, email=None, phone=None, address=None, company=None, job_title=None, notes=None, tags=None):
         """Add a new contact to the database."""
         try:
@@ -172,7 +169,6 @@ class ContactManager:
             click.echo(f"{Fore.RED}Error adding contact: {e}{Style.RESET_ALL}")
             return False
     
-    @_measure_performance
     def delete_contact(self, contact_id):
         """Delete a contact by ID."""
         with sqlite3.connect(self.db_path) as conn:
@@ -189,7 +185,6 @@ class ContactManager:
             click.echo(f"{Fore.GREEN}Contact '{contact[0]}' deleted successfully!{Style.RESET_ALL}")
             return True
     
-    @_measure_performance
     def list_all_contacts(self):
         """List all contacts in the database."""
         with sqlite3.connect(self.db_path) as conn:
@@ -202,7 +197,6 @@ class ContactManager:
             contacts = cursor.fetchall()
             return contacts
     
-    @_measure_performance
     def update_contact(self, contact_id, **kwargs):
         """Update a contact by ID."""
         try:

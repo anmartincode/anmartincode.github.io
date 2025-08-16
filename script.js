@@ -1,5 +1,42 @@
 // Smooth scrolling for navigation links
 document.addEventListener('DOMContentLoaded', function() {
+    
+    // Project Carousel Functionality
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.project-slide');
+    const indicators = document.querySelectorAll('.indicator');
+    
+    function showSlide(index) {
+        // Hide all slides
+        slides.forEach(slide => slide.classList.remove('active'));
+        indicators.forEach(indicator => indicator.classList.remove('active'));
+        
+        // Show current slide
+        if (slides[index]) {
+            slides[index].classList.add('active');
+            indicators[index].classList.add('active');
+        }
+    }
+    
+    function changeSlide(direction) {
+        currentSlide = (currentSlide + direction + slides.length) % slides.length;
+        showSlide(currentSlide);
+    }
+    
+    function goToSlide(index) {
+        currentSlide = index;
+        showSlide(currentSlide);
+    }
+    
+    // Make functions globally available
+    window.changeSlide = changeSlide;
+    window.goToSlide = goToSlide;
+    
+    // Auto-advance slides every 5 seconds
+    setInterval(() => {
+        changeSlide(1);
+    }, 5000);
+    
     // Smooth scrolling for navigation links
     const navLinks = document.querySelectorAll('a[href^="#"]');
     
@@ -66,11 +103,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            navbar.style.background = 'rgba(52, 58, 64, 0.95)';
-            navbar.style.backdropFilter = 'blur(10px)';
+            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            navbar.style.backdropFilter = 'blur(15px)';
         } else {
-            navbar.style.background = 'rgba(52, 58, 64, 1)';
-            navbar.style.backdropFilter = 'none';
+            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            navbar.style.backdropFilter = 'blur(10px)';
         }
     });
 
@@ -79,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (heroTitle) {
         const text = heroTitle.textContent;
         heroTitle.textContent = '';
-        heroTitle.style.borderRight = '2px solid white';
+        heroTitle.style.borderRight = '2px solid var(--text-color)';
         
         let i = 0;
         const typeWriter = () => {

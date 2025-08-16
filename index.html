@@ -39,21 +39,90 @@
                         Demonstrating growth through enhanced projects and continuous learning.
                     </p>
                     <div class="hero-meta">
-                        <span class="selected-work">Selected work 2023 - Present</span>
+                        <span class="selected-work">Selected work 2024 - Present</span>
                     </div>
                 </div>
                 <div class="col-lg-4 text-center">
                     <div class="hero-visual">
-                        <div class="device-mockup">
-                            <div class="device-screen">
-                                <div class="code-preview">
-                                    <div class="code-line"><span class="keyword">class</span> <span class="class-name">Portfolio</span> {</div>
-                                    <div class="code-line indent">constructor() {</div>
-                                    <div class="code-line indent-2">this.skills = ['Software Engineering', 'Algorithms', 'Databases'];</div>
-                                    <div class="code-line indent-2">this.projects = ['Animal Shelter System', 'Algorithm Visualizer', 'Contact Manager'];</div>
-                                    <div class="code-line indent">}</div>
-                                    <div class="code-line">}</div>
+                        <div class="project-showcase">
+                            <div class="showcase-header">
+                                <h4>Featured Projects</h4>
+                                <p>Recent work highlights</p>
+                            </div>
+                            <div class="project-carousel">
+                                <div class="project-slide active" data-project="shelter">
+                                    <div class="project-device">
+                                        <div class="device-frame">
+                                            <div class="device-screen">
+                                                <div class="project-screenshot shelter-screenshot">
+                                                    <div class="screenshot-overlay">
+                                                        <h5>Animal Shelter Management</h5>
+                                                        <p>MongoDB CRUD Application</p>
+                                                        <div class="tech-stack">
+                                                            <span class="tech-tag">MongoDB</span>
+                                                            <span class="tech-tag">Python</span>
+                                                            <span class="tech-tag">Flask</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                                
+                                <div class="project-slide" data-project="algorithm">
+                                    <div class="project-device">
+                                        <div class="device-frame">
+                                            <div class="device-screen">
+                                                <div class="project-screenshot algorithm-screenshot">
+                                                    <div class="screenshot-overlay">
+                                                        <h5>Algorithm Visualizer</h5>
+                                                        <p>Interactive Data Structures</p>
+                                                        <div class="tech-stack">
+                                                            <span class="tech-tag">JavaScript</span>
+                                                            <span class="tech-tag">D3.js</span>
+                                                            <span class="tech-tag">Flask</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="project-slide" data-project="database">
+                                    <div class="project-device">
+                                        <div class="device-frame">
+                                            <div class="device-screen">
+                                                <div class="project-screenshot database-screenshot">
+                                                    <div class="screenshot-overlay">
+                                                        <h5>Contact Manager</h5>
+                                                        <p>SQLite Database System</p>
+                                                        <div class="tech-stack">
+                                                            <span class="tech-tag">SQLite</span>
+                                                            <span class="tech-tag">Python</span>
+                                                            <span class="tech-tag">CLI</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="carousel-controls">
+                                <button class="carousel-btn prev-btn" onclick="changeSlide(-1)">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <div class="carousel-indicators">
+                                    <span class="indicator active" onclick="goToSlide(0)"></span>
+                                    <span class="indicator" onclick="goToSlide(1)"></span>
+                                    <span class="indicator" onclick="goToSlide(2)"></span>
+                                </div>
+                                <button class="carousel-btn next-btn" onclick="changeSlide(1)">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
                             </div>
                         </div>
                     </div>

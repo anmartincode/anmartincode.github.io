@@ -126,47 +126,181 @@ body {
     height: 100%;
 }
 
-.device-mockup {
+/* Project Showcase */
+.project-showcase {
     background: white;
     border-radius: 20px;
     padding: 2rem;
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     border: 1px solid rgba(0,0,0,0.05);
-    max-width: 400px;
+    max-width: 450px;
     width: 100%;
 }
 
-.device-screen {
-    background: #1e1e1e;
-    border-radius: 10px;
-    padding: 1.5rem;
-    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-    font-size: 0.9rem;
-    line-height: 1.6;
+.showcase-header {
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
-.code-preview {
-    color: #d4d4d4;
-}
-
-.code-line {
+.showcase-header h4 {
+    color: var(--text-color);
+    font-size: 1.3rem;
+    font-weight: 600;
     margin-bottom: 0.5rem;
 }
 
-.keyword {
-    color: #569cd6;
+.showcase-header p {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    margin: 0;
 }
 
-.class-name {
-    color: #4ec9b0;
+.project-carousel {
+    position: relative;
+    height: 300px;
+    margin-bottom: 2rem;
+    overflow: hidden;
 }
 
-.indent {
-    margin-left: 1.5rem;
+.project-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.indent-2 {
-    margin-left: 3rem;
+.project-slide.active {
+    opacity: 1;
+}
+
+.project-device {
+    width: 100%;
+    max-width: 350px;
+}
+
+.device-frame {
+    background: #2d3748;
+    border-radius: 15px;
+    padding: 1rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.device-screen {
+    background: #f8f9fa;
+    border-radius: 8px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-screenshot {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.shelter-screenshot {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.algorithm-screenshot {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.database-screenshot {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.screenshot-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.screenshot-overlay h5 {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.screenshot-overlay p {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.tech-stack {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tech-tag {
+    background: var(--primary-color);
+    color: white;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-weight: 500;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.carousel-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.carousel-btn:hover {
+    background: var(--dark-color);
+    transform: scale(1.1);
+}
+
+.carousel-indicators {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: var(--primary-color);
+    transform: scale(1.2);
 }
 
 /* Section Titles */
@@ -486,9 +620,17 @@ footer {
         padding: 2rem;
     }
     
-    .device-mockup {
-        max-width: 300px;
+    .project-showcase {
+        max-width: 350px;
         padding: 1.5rem;
+    }
+    
+    .project-carousel {
+        height: 250px;
+    }
+    
+    .device-screen {
+        height: 150px;
     }
 }
 
@@ -515,14 +657,29 @@ footer {
         padding: 2rem;
     }
     
-    .device-mockup {
-        max-width: 250px;
+    .project-showcase {
+        max-width: 300px;
         padding: 1rem;
     }
     
+    .project-carousel {
+        height: 200px;
+    }
+    
     .device-screen {
-        font-size: 0.8rem;
+        height: 120px;
+    }
+    
+    .screenshot-overlay {
         padding: 1rem;
+    }
+    
+    .screenshot-overlay h5 {
+        font-size: 1rem;
+    }
+    
+    .screenshot-overlay p {
+        font-size: 0.8rem;
     }
 }
 

@@ -303,6 +303,67 @@ body {
     transform: scale(1.2);
 }
 
+/* Code Review Card */
+.code-review-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    border: 1px solid rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.code-review-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+.code-review-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.code-review-icon {
+    color: #dc3545;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.code-review-text {
+    flex: 1;
+}
+
+.code-review-text h6 {
+    color: var(--text-color);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    font-size: 0.95rem;
+}
+
+.code-review-text p {
+    color: var(--secondary-color);
+    font-size: 0.8rem;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.code-review-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.code-review-link:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: scale(1.1);
+}
+
 /* Section Titles */
 .section-title {
     font-family: 'Playfair Display', serif;

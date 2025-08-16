@@ -413,7 +413,7 @@ class AVLTree:
         """Return the next operation for visualization"""
         if self.log:
             return self.log.pop(0)
-        return None
+        return None 
 
     def reset(self):
         """Reset the tree and operation log"""

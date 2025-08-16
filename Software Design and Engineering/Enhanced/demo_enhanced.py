@@ -20,7 +20,7 @@ DEMO_DATA = [
         "animal_type": "Dog",
         "breed": "Golden Retriever",
         "outcome": "Adoption",
-        "intake_date": "2024-01-15T10:00:00",
+        "intake_date": "2025-01-15T10:00:00",
         "health_score": 0.9
     },
     {
@@ -29,7 +29,7 @@ DEMO_DATA = [
         "animal_type": "Cat",
         "breed": "Persian",
         "outcome": "Adoption",
-        "intake_date": "2024-01-20T14:30:00",
+        "intake_date": "2025-01-20T14:30:00",
         "health_score": 0.8
     },
     {
@@ -38,7 +38,7 @@ DEMO_DATA = [
         "animal_type": "Dog",
         "breed": "German Shepherd",
         "outcome": "Transfer",
-        "intake_date": "2024-02-01T09:15:00",
+        "intake_date": "2025-02-01T09:15:00",
         "health_score": 0.7
     },
     {
@@ -47,7 +47,7 @@ DEMO_DATA = [
         "animal_type": "Cat",
         "breed": "Siamese",
         "outcome": "Adoption",
-        "intake_date": "2024-02-10T16:45:00",
+        "intake_date": "2025-02-10T16:45:00",
         "health_score": 0.95
     },
     {
@@ -56,7 +56,7 @@ DEMO_DATA = [
         "animal_type": "Dog",
         "breed": "Bulldog",
         "outcome": "Return to Owner",
-        "intake_date": "2024-02-15T11:20:00",
+        "intake_date": "2025-02-15T11:20:00",
         "health_score": 0.6
     }
 ]

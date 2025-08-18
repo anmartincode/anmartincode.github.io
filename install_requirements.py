@@ -44,7 +44,7 @@ def install_requirements_file(file_path: str, relative_path: str) -> bool:
     Returns:
         True if installation was successful, False otherwise
     """
-    print(f"\n📦 Installing requirements from: {relative_path}")
+    print(f"\n Installing requirements from: {relative_path}")
     print(f"   Full path: {file_path}")
     
     try:
@@ -56,7 +56,7 @@ def install_requirements_file(file_path: str, relative_path: str) -> bool:
             check=True
         )
         
-        print(f"   ✅ Successfully installed requirements from {relative_path}")
+        print(f"   Successfully installed requirements from {relative_path}")
         return True
         
     except subprocess.CalledProcessError as e:
@@ -70,12 +70,12 @@ def install_requirements_file(file_path: str, relative_path: str) -> bool:
 
 def main():
     """Main function to orchestrate the requirements installation."""
-    print("🚀 Automatic Requirements Installer")
+    print(" Automatic Requirements Installer")
     print("=" * 50)
     
     # Check if we're in a virtual environment
     if not hasattr(sys, 'real_prefix') and not (hasattr(sys, 'base_prefix') and sys.base_prefix != sys.prefix):
-        print("⚠️  Warning: It appears you're not in a virtual environment.")
+        print("  Warning: It appears you're not in a virtual environment.")
         print("   Consider activating a virtual environment before running this script.")
         response = input("   Continue anyway? (y/N): ").strip().lower()
         if response not in ['y', 'yes']:
@@ -87,15 +87,15 @@ def main():
     requirements_files = find_requirements_files()
     
     if not requirements_files:
-        print("❌ No requirements files found in the project directory.")
+        print(" No requirements files found in the project directory.")
         return
     
-    print(f"📋 Found {len(requirements_files)} requirements file(s):")
+    print(f" Found {len(requirements_files)} requirements file(s):")
     for _, relative_path in requirements_files:
         print(f"   • {relative_path}")
     
     # Confirm installation
-    print(f"\n🤔 Ready to install requirements from {len(requirements_files)} file(s).")
+    print(f"\n Ready to install requirements from {len(requirements_files)} file(s).")
     response = input("   Proceed with installation? (Y/n): ").strip().lower()
     if response in ['n', 'no']:
         print("   Installation cancelled.")
@@ -115,16 +115,16 @@ def main():
     # Summary
     print("\n" + "=" * 50)
     print("📊 Installation Summary:")
-    print(f"   ✅ Successful: {successful_installations}")
-    print(f"   ❌ Failed: {failed_installations}")
-    print(f"   📁 Total files processed: {len(requirements_files)}")
+    print(f"    Successful: {successful_installations}")
+    print(f"    Failed: {failed_installations}")
+    print(f"    Total files processed: {len(requirements_files)}")
     
     if failed_installations == 0:
-        print("\n🎉 All requirements installed successfully!")
+        print("\n All requirements installed successfully!")
     else:
-        print(f"\n⚠️  {failed_installations} installation(s) failed. Check the output above for details.")
+        print(f"\n⚠  {failed_installations} installation(s) failed. Check the output above for details.")
     
-    print("\n💡 Tip: You can run this script anytime to reinstall requirements.")
+    print("\n Tip: You can run this script anytime to reinstall requirements.")
 
 
 if __name__ == "__main__":

@@ -123,14 +123,14 @@ document.addEventListener('DOMContentLoaded', function() {
             if (i < text.length) {
                 heroTitle.textContent += text.charAt(i);
                 i++;
-                setTimeout(typeWriter, 50);
+                setTimeout(typeWriter, 45);
             } else {
                 heroTitle.style.borderRight = 'none';
             }
         };
         
         // Start typing effect after a short delay
-        setTimeout(typeWriter, 200);
+        setTimeout(typeWriter, 50);
     }
 
     // Parallax effect for hero section
